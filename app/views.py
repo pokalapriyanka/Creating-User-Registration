@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from app.forms import *
 from django.http import HttpResponse
+from django.core.mail import send_mail
 # Create your views here.
 def registration(request):
     d={'EUFO':UserForm(),'EPFO':ProfileForm()}
@@ -12,6 +13,12 @@ def registration(request):
             pw=NMUFDO.cleaned_data['password']
             MUFDO.set_password(pw)
             MUFDO.save()
+            send_mail('Registration',
+            'Thank you for Registering',
+            'p9584520@gmail.com',
+            [MUFDO.email],
+            fail_silently=False
+            )
             MPFDO=NMPFDO.save(commit=False)
             MPFDO.username=MUFDO
             MPFDO.save()
