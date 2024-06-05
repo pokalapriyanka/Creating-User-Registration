@@ -1,0 +1,16 @@
+{% extends 'dummy.html' %}
+
+{% block title %}
+<title>Profile Display Page</title>
+
+{% endblock %}
+
+
+{% block body_block  %}
+    <h1>Display  profile_display</h1>
+    <h2>Username is {{UO.usename}}</h2>
+    <h2>Email is {{UO.email}}</h2>
+    <h2>Adress is {{PO.address}}</h2>
+    <h2>Profile_pic is {{PO.profile_pic}}</h2>
+    <img src="{{PO.profile_pic.url}}" alt="no image">
+{% endblock %}
